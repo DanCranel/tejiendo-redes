@@ -1,6 +1,8 @@
 import Image from "next/image";
-import InstagramEmbeds from "./components/InstagramEmbeds";
-import TestimoniosCarrusel from "./components/TestimoniosCarrusel";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import InstagramEmbeds from "@/app/components/InstagramEmbeds";
+import TestimoniosCarrusel from "@/app/components/TestimoniosCarrusel";
+import LanguageSwitcher from "@/app/components/LanguageSwitcher";
 
 const WHATSAPP_PHONE = "593984712983";
 
@@ -8,8 +10,16 @@ function waLink(mensaje: string) {
   return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(mensaje)}`;
 }
 
-const WHATSAPP_URL = waLink("Hola, quiero información sobre sus servicios");
 const INSTAGRAM_URL = "https://www.instagram.com/tejiendo_redes23/";
+
+type Servicio = {
+  grupo: string;
+  titulo: string;
+  desc: string;
+  mensaje: string;
+};
+
+type Ventaja = { t: string; d: string };
 
 function WhatsappIcon({ className = "" }: { className?: string }) {
   return (
@@ -37,43 +47,14 @@ function InstagramIcon({ className = "" }: { className?: string }) {
   );
 }
 
-const servicios = [
-  {
-    titulo: "Control de tareas",
-    desc: "Acompañamiento y seguimiento diario para que las tareas se cumplan a tiempo.",
-    grupo: "Colegio",
-    mensaje:
-      "Hola, quiero información sobre el servicio de Control de tareas.",
-  },
-  {
-    titulo: "Clases personalizadas",
-    desc: "Clases uno a uno adaptadas al ritmo del estudiante. Matemáticas, inglés y más.",
-    grupo: "Colegio",
-    mensaje:
-      "Hola, quiero información sobre las Clases personalizadas.",
-  },
-  {
-    titulo: "Creación de ensayos",
-    desc: "Apoyo para estructurar y desarrollar ensayos y trabajos académicos.",
-    grupo: "Universidad",
-    mensaje:
-      "Hola, quiero información sobre el servicio de Creación de ensayos.",
-  },
-  {
-    titulo: "Edición y corrección",
-    desc: "Revisión de ortografía, redacción y formato para entregar textos impecables.",
-    grupo: "Universidad",
-    mensaje:
-      "Hola, quiero información sobre el servicio de Edición y corrección.",
-  },
-];
-
 function WhatsAppButton({
   children,
+  href,
   variant = "green",
   className = "",
 }: {
   children: React.ReactNode;
+  href: string;
   variant?: "green" | "white" | "coral";
   className?: string;
 }) {
@@ -84,7 +65,7 @@ function WhatsAppButton({
   };
   return (
     <a
-      href={WHATSAPP_URL}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
       className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-bold shadow-sm transition ${styles[variant]} ${className}`}
@@ -95,7 +76,19 @@ function WhatsAppButton({
   );
 }
 
-export default function Home() {
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function Home({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations();
+
+  const whatsappUrl = waLink(t("whatsapp.general"));
+  const servicios = t.raw("servicios.items") as Servicio[];
+  const ventajas = t.raw("nosotros.items") as Ventaja[];
+
   return (
     <div className="flex min-h-full flex-col">
       {/* Navbar */}
@@ -111,23 +104,23 @@ export default function Home() {
           </a>
           <nav className="hidden items-center gap-6 text-sm font-bold text-ink-soft md:flex">
             <a href="#servicios" className="hover:text-brand">
-              Servicios
+              {t("nav.servicios")}
             </a>
             <a href="#nosotros" className="hover:text-brand">
-              Nosotros
+              {t("nav.nosotros")}
             </a>
             <a href="#testimonios" className="hover:text-brand">
-              Testimonios
+              {t("nav.testimonios")}
             </a>
             <a href="#faq" className="hover:text-brand">
-              FAQ
+              {t("nav.faq")}
             </a>
           </nav>
           <div className="flex items-center gap-3">
-            <span className="hidden rounded-full border border-cream-dark px-2.5 py-1 text-xs font-bold text-ink-soft sm:inline">
-              ES · EN
-            </span>
-            <WhatsAppButton className="text-sm">WhatsApp</WhatsAppButton>
+            <LanguageSwitcher />
+            <WhatsAppButton href={whatsappUrl} className="text-sm">
+              {t("nav.whatsapp")}
+            </WhatsAppButton>
           </div>
         </div>
       </header>
@@ -138,26 +131,27 @@ export default function Home() {
           <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-4 py-16 md:flex-row md:py-20">
             <div className="flex-1 text-center md:text-left">
               <h1 className="text-3xl font-extrabold leading-tight text-white md:text-5xl">
-                Acompañamos el aprendizaje de tu familia
+                {t("hero.titulo")}
               </h1>
               <p className="mx-auto mt-4 max-w-md text-lg text-cream md:mx-0">
-                Centro psicopedagógico con apoyo escolar y clases
-                personalizadas, con un trato cercano y humano.
+                {t("hero.descripcion")}
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-3 md:justify-start">
-                <WhatsAppButton variant="white">Escríbenos</WhatsAppButton>
+                <WhatsAppButton href={whatsappUrl} variant="white">
+                  {t("hero.escribenos")}
+                </WhatsAppButton>
                 <a
                   href="#servicios"
                   className="inline-flex items-center rounded-full border border-white/70 px-5 py-2.5 font-bold text-white transition hover:bg-white/10"
                 >
-                  Ver servicios
+                  {t("hero.verServicios")}
                 </a>
               </div>
             </div>
             <div className="flex-1">
               <Image
                 src="/teji-abrazo.png"
-                alt="Mascota Teji: familia de nutrias abrazadas"
+                alt={t("hero.imgAlt")}
                 width={520}
                 height={440}
                 priority
@@ -171,10 +165,10 @@ export default function Home() {
         <section id="servicios" className="bg-cream">
           <div className="mx-auto max-w-6xl px-4 py-16">
             <h2 className="text-center text-3xl font-extrabold text-brand-deep">
-              Nuestros servicios
+              {t("servicios.titulo")}
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-center text-ink-soft">
-              Apoyo para estudiantes de colegio y para universitarios o adultos.
+              {t("servicios.subtitulo")}
             </p>
             <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {servicios.map((s) => (
@@ -196,7 +190,7 @@ export default function Home() {
                     className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-coral-dark hover:underline"
                   >
                     <WhatsappIcon className="h-4 w-4" />
-                    Escríbenos por WhatsApp
+                    {t("servicios.cta")}
                   </a>
                 </div>
               ))}
@@ -208,20 +202,7 @@ export default function Home() {
         <section id="nosotros" className="bg-white">
           <div className="mx-auto max-w-6xl px-4 py-16">
             <div className="grid gap-6 md:grid-cols-3">
-              {[
-                {
-                  t: "Trato cercano",
-                  d: "Conocemos a cada estudiante y adaptamos el apoyo a sus necesidades.",
-                },
-                {
-                  t: "Seguimiento constante",
-                  d: "Acompañamos el proceso y mantenemos informada a la familia.",
-                },
-                {
-                  t: "Presencial u online",
-                  d: "Elige la modalidad que mejor se ajuste a tus horarios.",
-                },
-              ].map((item) => (
+              {ventajas.map((item) => (
                 <div
                   key={item.t}
                   className="rounded-2xl bg-coral/10 p-6 text-center"
@@ -240,11 +221,10 @@ export default function Home() {
         <section className="bg-cream">
           <div className="mx-auto max-w-6xl px-4 py-16 text-center">
             <h2 className="text-3xl font-extrabold text-brand-deep">
-              Tips en nuestro Instagram
+              {t("instagram.titulo")}
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-ink-soft">
-              Compartimos consejos de estudio y aprendizaje. Síguenos para no
-              perderte nada.
+              {t("instagram.descripcion")}
             </p>
             <InstagramEmbeds />
             <a
@@ -254,7 +234,7 @@ export default function Home() {
               className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 font-bold text-white shadow-sm transition hover:bg-brand-dark"
             >
               <InstagramIcon className="h-5 w-5" />
-              Síguenos en Instagram
+              {t("instagram.cta")}
             </a>
           </div>
         </section>
@@ -263,7 +243,7 @@ export default function Home() {
         <section id="testimonios" className="bg-white">
           <div className="mx-auto max-w-6xl px-4 py-16">
             <h2 className="text-center text-3xl font-extrabold text-brand-deep">
-              Lo que dicen las familias
+              {t("testimonios.titulo")}
             </h2>
             <TestimoniosCarrusel />
           </div>
@@ -273,13 +253,13 @@ export default function Home() {
         <section id="contacto" className="bg-brand">
           <div className="mx-auto max-w-3xl px-4 py-16 text-center">
             <h2 className="text-3xl font-extrabold text-white">
-              ¿Listos para empezar?
+              {t("cta.titulo")}
             </h2>
-            <p className="mt-3 text-white/90">
-              Escríbenos y con gusto te damos toda la información.
-            </p>
+            <p className="mt-3 text-white/90">{t("cta.descripcion")}</p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <WhatsAppButton variant="white">WhatsApp</WhatsAppButton>
+              <WhatsAppButton href={whatsappUrl} variant="white">
+                {t("cta.whatsapp")}
+              </WhatsAppButton>
             </div>
           </div>
         </section>
@@ -302,7 +282,7 @@ export default function Home() {
               <InstagramIcon className="h-5 w-5" />
             </a>
             <a
-              href={WHATSAPP_URL}
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
@@ -310,11 +290,11 @@ export default function Home() {
             >
               <WhatsappIcon className="h-5 w-5" />
             </a>
-            <span>Ecuador</span>
+            <span>{t("footer.pais")}</span>
           </div>
         </div>
         <div className="border-t border-white/10 py-4 text-center text-xs text-cream/70">
-          © 2026 Tejiendo Redes. Todos los derechos reservados.
+          {t("footer.derechos")}
         </div>
       </footer>
     </div>

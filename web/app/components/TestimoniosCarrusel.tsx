@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 type Testimonio = {
   texto: string;
@@ -8,46 +9,16 @@ type Testimonio = {
   detalle: string;
 };
 
-const TESTIMONIOS: Testimonio[] = [
-  {
-    texto:
-      "Mi hijo llegaba abrumado con las tareas y ahora las organiza solo. El acompañamiento diario nos cambió las tardes en casa.",
-    autor: "María Fernanda C.",
-    detalle: "Mamá de Mateo, 4.º de básica",
-  },
-  {
-    texto:
-      "Las clases de inglés personalizadas le devolvieron la confianza a mi hija. Subió sus notas y ya no le tiene miedo a hablar en clase.",
-    autor: "Jorge A.",
-    detalle: "Papá de familia",
-  },
-  {
-    texto:
-      "Me ayudaron a estructurar el ensayo de mi tesina desde cero. Aprendí a ordenar mis ideas, no solo a entregar el trabajo.",
-    autor: "Doménica L.",
-    detalle: "Estudiante universitaria",
-  },
-  {
-    texto:
-      "Lo que más valoro es la comunicación constante. Siempre sé cómo va mi hijo y en qué está mejorando. Se nota que le tienen paciencia.",
-    autor: "Andrea P.",
-    detalle: "Mamá de familia",
-  },
-  {
-    texto:
-      "Enviaba mis textos y me los devolvían corregidos y mucho más claros, explicándome cada cambio. Excelente edición y trato cercano.",
-    autor: "Sebastián M.",
-    detalle: "Estudiante universitario",
-  },
-];
-
 const INTERVALO = 6000;
 
 export default function TestimoniosCarrusel() {
+  const t = useTranslations("testimonios");
+  const testimonios = t.raw("items") as Testimonio[];
+
   const [indice, setIndice] = useState(0);
   const [pausado, setPausado] = useState(false);
 
-  const total = TESTIMONIOS.length;
+  const total = testimonios.length;
   const ir = useCallback((i: number) => setIndice((i + total) % total), [total]);
   const siguiente = useCallback(() => ir(indice + 1), [ir, indice]);
   const anterior = useCallback(() => ir(indice - 1), [ir, indice]);
@@ -68,7 +39,7 @@ export default function TestimoniosCarrusel() {
         <button
           type="button"
           onClick={anterior}
-          aria-label="Testimonio anterior"
+          aria-label={t("anterior")}
           className="hidden h-10 w-10 flex-none items-center justify-center rounded-full border border-cream-dark bg-white text-brand transition hover:bg-cream sm:flex"
         >
           <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
@@ -88,9 +59,9 @@ export default function TestimoniosCarrusel() {
             style={{ transform: `translateX(-${indice * 100}%)` }}
             aria-live="polite"
           >
-            {TESTIMONIOS.map((t) => (
+            {testimonios.map((item) => (
               <figure
-                key={t.autor}
+                key={item.autor}
                 className="flex w-full flex-none flex-col items-center px-2 text-center"
               >
                 <span
@@ -100,13 +71,13 @@ export default function TestimoniosCarrusel() {
                   &ldquo;
                 </span>
                 <blockquote className="mt-2 min-h-28 text-lg text-ink sm:min-h-24">
-                  {t.texto}
+                  {item.texto}
                 </blockquote>
                 <figcaption className="mt-5">
                   <span className="block font-extrabold text-brand-dark">
-                    {t.autor}
+                    {item.autor}
                   </span>
-                  <span className="text-sm text-ink-soft">{t.detalle}</span>
+                  <span className="text-sm text-ink-soft">{item.detalle}</span>
                 </figcaption>
               </figure>
             ))}
@@ -116,7 +87,7 @@ export default function TestimoniosCarrusel() {
         <button
           type="button"
           onClick={siguiente}
-          aria-label="Siguiente testimonio"
+          aria-label={t("siguiente")}
           className="hidden h-10 w-10 flex-none items-center justify-center rounded-full border border-cream-dark bg-white text-brand transition hover:bg-cream sm:flex"
         >
           <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
@@ -132,12 +103,12 @@ export default function TestimoniosCarrusel() {
       </div>
 
       <div className="mt-6 flex justify-center gap-2">
-        {TESTIMONIOS.map((t, i) => (
+        {testimonios.map((item, i) => (
           <button
-            key={t.autor}
+            key={item.autor}
             type="button"
             onClick={() => ir(i)}
-            aria-label={`Ir al testimonio ${i + 1}`}
+            aria-label={t("irA", { numero: i + 1 })}
             aria-current={i === indice}
             className={`h-2.5 rounded-full transition-all ${
               i === indice ? "w-6 bg-brand" : "w-2.5 bg-cream-dark hover:bg-coral"

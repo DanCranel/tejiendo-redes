@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "title": "Tejiendo Redes | Educational Support Center",
+    "description": "Tejiendo Redes psychopedagogical center: homework support, personalized classes, essay writing, editing and proofreading. Supporting your family's learning."
+  },
+  "nav": {
+    "servicios": "Services",
+    "nosotros": "About us",
+    "testimonios": "Testimonials",
+    "faq": "FAQ",
+    "whatsapp": "WhatsApp"
+  },
+  "hero": {
+    "titulo": "Supporting your family's learning",
+    "descripcion": "A psychopedagogical center offering school support and personalized classes, with a warm and caring approach.",
+    "escribenos": "Message us",
+    "verServicios": "View services",
+    "imgAlt": "Teji mascot: family of otters hugging"
+  },
+  "servicios": {
+    "titulo": "Our services",
+    "subtitulo": "Support for school students and for university students or adults.",
+    "cta": "Message us on WhatsApp",
+    "items": [
+      {
+        "grupo": "School",
+        "titulo": "Homework tracking",
+        "desc": "Daily support and follow-up so homework gets done on time.",
+        "mensaje": "Hi, I'd like information about the Homework tracking service."
+      },
+      {
+        "grupo": "School",
+        "titulo": "Personalized classes",
+        "desc": "One-on-one classes adapted to the student's pace. Math, English and more.",
+        "mensaje": "Hi, I'd like information about your Personalized classes."
+      },
+      {
+        "grupo": "University",
+        "titulo": "Essay writing",
+        "desc": "Support to structure and develop essays and academic papers.",
+        "mensaje": "Hi, I'd like information about the Essay writing service."
+      },
+      {
+        "grupo": "University",
+        "titulo": "Editing and proofreading",
+        "desc": "Spelling, wording and formatting review to deliver flawless texts.",
+        "mensaje": "Hi, I'd like information about the Editing and proofreading service."
+      }
+    ]
+  },
+  "nosotros": {
+    "items": [
+      {
+        "t": "A close, personal approach",
+        "d": "We get to know each student and adapt our support to their needs."
+      },
+      {
+        "t": "Constant follow-up",
+        "d": "We support the process and keep the family informed."
+      },
+      {
+        "t": "In person or online",
+        "d": "Choose the format that best fits your schedule."
+      }
+    ]
+  },
+  "instagram": {
+    "titulo": "Tips on our Instagram",
+    "descripcion": "We share study and learning tips. Follow us so you don't miss anything.",
+    "cta": "Follow us on Instagram"
+  },
+  "testimonios": {
+    "titulo": "What families are saying",
+    "anterior": "Previous testimonial",
+    "siguiente": "Next testimonial",
+    "irA": "Go to testimonial {numero}",
+    "items": [
+      {
+        "texto": "My son used to feel overwhelmed by his homework and now he organizes it on his own. The daily support changed our afternoons at home.",
+        "autor": "María Fernanda C.",
+        "detalle": "Mateo's mom, 4th grade"
+      },
+      {
+        "texto": "The personalized English classes gave my daughter her confidence back. Her grades went up and she's no longer afraid to speak in class.",
+        "autor": "Jorge A.",
+        "detalle": "Parent"
+      },
+      {
+        "texto": "They helped me structure my thesis essay from scratch. I learned to organize my ideas, not just to hand in the work.",
+        "autor": "Doménica L.",
+        "detalle": "University student"
+      },
+      {
+        "texto": "What I value most is the constant communication. I always know how my son is doing and where he's improving. You can tell they're patient with him.",
+        "autor": "Andrea P.",
+        "detalle": "Parent"
+      },
+      {
+        "texto": "I would send in my texts and get them back corrected and much clearer, with every change explained to me. Excellent editing and a warm, personal touch.",
+        "autor": "Sebastián M.",
+        "detalle": "University student"
+      }
+    ]
+  },
+  "cta": {
+    "titulo": "Ready to get started?",
+    "descripcion": "Message us and we'll gladly give you all the information.",
+    "whatsapp": "WhatsApp"
+  },
+  "footer": {
+    "pais": "Ecuador",
+    "derechos": "© 2026 Tejiendo Redes. All rights reserved."
+  },
+  "whatsapp": {
+    "general": "Hi, I'd like information about your services"
+  },
+  "idioma": {
+    "seleccionar": "Change language",
+    "es": "ES",
+    "en": "EN"
+  }
+}

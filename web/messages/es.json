@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "title": "Tejiendo Redes | Centro Psicopedagógico",
+    "description": "Centro psicopedagógico Tejiendo Redes: control de tareas, clases personalizadas, creación de ensayos, edición y corrección. Acompañamos el aprendizaje de tu familia."
+  },
+  "nav": {
+    "servicios": "Servicios",
+    "nosotros": "Nosotros",
+    "testimonios": "Testimonios",
+    "faq": "FAQ",
+    "whatsapp": "WhatsApp"
+  },
+  "hero": {
+    "titulo": "Acompañamos el aprendizaje de tu familia",
+    "descripcion": "Centro psicopedagógico con apoyo escolar y clases personalizadas, con un trato cercano y humano.",
+    "escribenos": "Escríbenos",
+    "verServicios": "Ver servicios",
+    "imgAlt": "Mascota Teji: familia de nutrias abrazadas"
+  },
+  "servicios": {
+    "titulo": "Nuestros servicios",
+    "subtitulo": "Apoyo para estudiantes de colegio y para universitarios o adultos.",
+    "cta": "Escríbenos por WhatsApp",
+    "items": [
+      {
+        "grupo": "Colegio",
+        "titulo": "Control de tareas",
+        "desc": "Acompañamiento y seguimiento diario para que las tareas se cumplan a tiempo.",
+        "mensaje": "Hola, quiero información sobre el servicio de Control de tareas."
+      },
+      {
+        "grupo": "Colegio",
+        "titulo": "Clases personalizadas",
+        "desc": "Clases uno a uno adaptadas al ritmo del estudiante. Matemáticas, inglés y más.",
+        "mensaje": "Hola, quiero información sobre las Clases personalizadas."
+      },
+      {
+        "grupo": "Universidad",
+        "titulo": "Creación de ensayos",
+        "desc": "Apoyo para estructurar y desarrollar ensayos y trabajos académicos.",
+        "mensaje": "Hola, quiero información sobre el servicio de Creación de ensayos."
+      },
+      {
+        "grupo": "Universidad",
+        "titulo": "Edición y corrección",
+        "desc": "Revisión de ortografía, redacción y formato para entregar textos impecables.",
+        "mensaje": "Hola, quiero información sobre el servicio de Edición y corrección."
+      }
+    ]
+  },
+  "nosotros": {
+    "items": [
+      {
+        "t": "Trato cercano",
+        "d": "Conocemos a cada estudiante y adaptamos el apoyo a sus necesidades."
+      },
+      {
+        "t": "Seguimiento constante",
+        "d": "Acompañamos el proceso y mantenemos informada a la familia."
+      },
+      {
+        "t": "Presencial u online",
+        "d": "Elige la modalidad que mejor se ajuste a tus horarios."
+      }
+    ]
+  },
+  "instagram": {
+    "titulo": "Tips en nuestro Instagram",
+    "descripcion": "Compartimos consejos de estudio y aprendizaje. Síguenos para no perderte nada.",
+    "cta": "Síguenos en Instagram"
+  },
+  "testimonios": {
+    "titulo": "Lo que dicen las familias",
+    "anterior": "Testimonio anterior",
+    "siguiente": "Siguiente testimonio",
+    "irA": "Ir al testimonio {numero}",
+    "items": [
+      {
+        "texto": "Mi hijo llegaba abrumado con las tareas y ahora las organiza solo. El acompañamiento diario nos cambió las tardes en casa.",
+        "autor": "María Fernanda C.",
+        "detalle": "Mamá de Mateo, 4.º de básica"
+      },
+      {
+        "texto": "Las clases de inglés personalizadas le devolvieron la confianza a mi hija. Subió sus notas y ya no le tiene miedo a hablar en clase.",
+        "autor": "Jorge A.",
+        "detalle": "Papá de familia"
+      },
+      {
+        "texto": "Me ayudaron a estructurar el ensayo de mi tesina desde cero. Aprendí a ordenar mis ideas, no solo a entregar el trabajo.",
+        "autor": "Doménica L.",
+        "detalle": "Estudiante universitaria"
+      },
+      {
+        "texto": "Lo que más valoro es la comunicación constante. Siempre sé cómo va mi hijo y en qué está mejorando. Se nota que le tienen paciencia.",
+        "autor": "Andrea P.",
+        "detalle": "Mamá de familia"
+      },
+      {
+        "texto": "Enviaba mis textos y me los devolvían corregidos y mucho más claros, explicándome cada cambio. Excelente edición y trato cercano.",
+        "autor": "Sebastián M.",
+        "detalle": "Estudiante universitario"
+      }
+    ]
+  },
+  "cta": {
+    "titulo": "¿Listos para empezar?",
+    "descripcion": "Escríbenos y con gusto te damos toda la información.",
+    "whatsapp": "WhatsApp"
+  },
+  "footer": {
+    "pais": "Ecuador",
+    "derechos": "© 2026 Tejiendo Redes. Todos los derechos reservados."
+  },
+  "whatsapp": {
+    "general": "Hola, quiero información sobre sus servicios"
+  },
+  "idioma": {
+    "seleccionar": "Cambiar idioma",
+    "es": "ES",
+    "en": "EN"
+  }
+}
