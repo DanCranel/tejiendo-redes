@@ -1,5 +1,6 @@
 import Image from "next/image";
 import InstagramEmbeds from "./components/InstagramEmbeds";
+import TestimoniosCarrusel from "./components/TestimoniosCarrusel";
 
 const WHATSAPP_PHONE = "593984712983";
 
@@ -64,19 +65,6 @@ const servicios = [
     grupo: "Universidad",
     mensaje:
       "Hola, quiero información sobre el servicio de Edición y corrección.",
-  },
-];
-
-const testimonios = [
-  {
-    texto:
-      "Mi hijo mejoró muchísimo en el colegio y ahora hace sus tareas con más confianza.",
-    autor: "Madre de familia",
-  },
-  {
-    texto:
-      "Me ayudaron a estructurar mi ensayo de la universidad. Excelente acompañamiento.",
-    autor: "Estudiante universitario",
   },
 ];
 
@@ -277,19 +265,7 @@ export default function Home() {
             <h2 className="text-center text-3xl font-extrabold text-brand-deep">
               Lo que dicen las familias
             </h2>
-            <div className="mx-auto mt-10 grid max-w-3xl gap-6 md:grid-cols-2">
-              {testimonios.map((t) => (
-                <figure
-                  key={t.autor}
-                  className="rounded-2xl border border-cream-dark bg-cream p-6"
-                >
-                  <blockquote className="text-ink">“{t.texto}”</blockquote>
-                  <figcaption className="mt-4 font-bold text-brand-dark">
-                    — {t.autor}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
+            <TestimoniosCarrusel />
           </div>
         </section>
 
