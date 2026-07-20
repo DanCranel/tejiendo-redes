@@ -1,0 +1,25 @@
+# === Dependencias / builds (respaldo; web/ ya los ignora) ===
+node_modules/
+.next/
+out/
+build/
+dist/
+
+# === Variables de entorno (nunca subir claves) ===
+.env
+.env.*
+*.local
+
+# === Sistema operativo / editores ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === Configuración local de herramientas ===
+.claude/
+.vercel/
+
+# === Recursos: multimedia pesada (excede el límite de 100 MB de GitHub) ===
+Recursos/Contenido Redes Sociales/
+*.mov
+*.mp4
