@@ -294,7 +294,17 @@ export default async function Home({ params }: Props) {
           </div>
         </div>
         <div className="border-t border-white/10 py-4 text-center text-xs text-cream/70">
-          {t("footer.derechos")}
+          <p>{t("footer.derechos")}</p>
+          <p className="mt-1">
+            <a
+              href="https://github.com/DanCranel"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition hover:text-white"
+            >
+              {t("footer.credito")}
+            </a>
+          </p>
         </div>
       </footer>
     </div>

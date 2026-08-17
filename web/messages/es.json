@@ -109,7 +109,8 @@
   },
   "footer": {
     "pais": "Ecuador",
-    "derechos": "© 2026 Tejiendo Redes. Todos los derechos reservados."
+    "derechos": "© 2026 Tejiendo Redes. Todos los derechos reservados.",
+    "credito": "Desarrollado por Cranel Studios"
   },
   "whatsapp": {
     "general": "Hola, quiero información sobre sus servicios"
