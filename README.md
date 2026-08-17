@@ -6,6 +6,8 @@
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Deploy-Vercel-000000?logo=vercel&logoColor=white)
 
+### 🌐 [Ver demo en vivo →](https://tejiendo-redes-iota.vercel.app/es)
+
 > Sitio web de marketing para **Tejiendo Redes**, un centro psicopedagógico en Ecuador
 > que ofrece apoyo académico personalizado: control de tareas, clases personalizadas,
 > creación de ensayos y edición/corrección de textos.
