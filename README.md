@@ -81,4 +81,4 @@ subdirectorio del repositorio).
 
 ## 👤 Autor
 
-Desarrollado por **Daniel Morales** ([@DanCranel](https://github.com/DanCranel)).
+Desarrollado por **Daniel Morales** — **Cranel Studios** ([@DanCranel](https://github.com/DanCranel)).
